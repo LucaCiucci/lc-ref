@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../dist/lc-ref.js"></script>
+</head>
+<body>
+
+    <style>
+        :target {
+            background: red;
+        }
+        body {
+            padding: 2em;
+        }
+    </style>
+
+    ciao
+
+    <div>
+        <my-element>
+            my-element
+        </my-element>
+    </div>
+    <div>
+        <my-element id="id">
+            my-element 2
+        </my-element>
+    </div>
+
+    <lc-ref href="#id">ciao. </lc-ref><br>
+    <lc-ref href="./#id">ciao. </lc-ref><br>
+    <lc-ref href="https://example.com">example</lc-ref><br>
+    <lc-ref href="#">loop</lc-ref>
+
+    <script>
+        class MyElement extends HTMLElement {
+            constructor() {
+                super();
+
+                this.lc_pre_numbering = function() {
+                    //console.log("lc_pre_numbering called");
+                }
+                this.lc_number = function(n) {
+                    //console.log("this.lc_number", n)
+                    return n + "!";
+                };
+            }
+
+            connectedCallback() {
+                //console.log("connected2")
+                if (lc_ref != undefined) {
+                    lc_ref.renumerate();
+                }
+            }
+
+            lc_post_numbering() {
+                //console.log("lc_post_numbering called");
+            }
+
+            /**
+             * @param {HTMLElement} element
+             */
+            lc_build_ref_preview(element) {
+                element.innerHTML = "ciao a tutti";
+            }
+        }
+        customElements.define("my-element", MyElement);
+
+    </script>
+
+    <script>
+        lc_ref.enumerate();
+    </script>
+    
+</body>
+</html>

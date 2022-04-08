@@ -1,0 +1,71 @@
+{
+  "name": "lc-ref",
+  "version": "0.0.0",
+  "description": "A LaTeX style webcomponent reference and preview",
+  "homepage": "https://github.com/LucaCiucci/lc-ref#readme",
+  "bugs": {
+    "url" : "https://github.com/LucaCiucci/lc-ref/issues",
+    "email" : "develop@lucaciucci99.com"
+  },
+  "repository": "github:LucaCiucci/lc-ref",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "build": "npm run compile && webpack",
+    "lint": "tslint -c tslint.json src/**/*.ts",
+    "prepublish": "npm run build",
+    "webpack-watch": "npx webpack --watch"
+  },
+  "scriptsComments" : {
+    "compile": "compiles typescript, you may not need to run this alone",
+    "build": "builds the lib and the dist",
+    "webpack-watch": "starts webpack in watch mode, used in development"
+  },
+  "keywords": [
+    "lc",
+    "references",
+    "reference",
+    "webcomponent",
+    "webcomponents",
+    "latex",
+    "katex",
+    "html",
+    "tex-math",
+    "i-math"
+  ],
+  "author": {
+    "name": "Luca Ciucci",
+    "email" : "develop@lucaciucci99.com"
+  },
+  "dependencies": {
+    "tslint": "^6.1.3",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^10.2.4",
+    "css-loader": "^6.6.0",
+    "css-modules-typescript-loader": "latest",
+    "file-loader": "latest",
+    "raw-loader": "^4.0.2",
+    "style-loader": "^3.3.1",
+    "ts-loader": "latest",
+    "typescript-declaration-webpack-plugin": "latest",
+    "typings-for-css-modules-loader": "^1.7.0",
+    "webpack": "latest",
+    "webpack-cli": "latest"
+  },
+  "files": [
+    "lib/*",
+    "dist/*",
+    "src/*",
+    "examples/*",
+    "tsconfig.json",
+    "tslint.json",
+    "webpack.config.js",
+    "readme.md",
+    "package.json",
+    ".editorconfig",
+    ".gitignore"
+  ],
+  "typings": "./lib/index.d.ts"
+}
