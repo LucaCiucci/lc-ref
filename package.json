@@ -1,6 +1,6 @@
 {
   "name": "lc-ref",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A LaTeX style webcomponent reference and preview",
   "homepage": "https://github.com/LucaCiucci/lc-ref#readme",
   "bugs": {

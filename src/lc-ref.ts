@@ -56,13 +56,6 @@ export class LCRef extends HTMLElement {
     constructor() {
         super();
 
-        // nothing to do here, we will use the connectedCallback() function to create the shadow DOM.
-    }
-
-
-    connectedCallback() {
-        // Here we create a shadow DOM for the element since it might not be created in the constructor.
-
         // we create the shadow root.
         this.attachShadow({ mode: 'open' });
 
@@ -77,6 +70,11 @@ export class LCRef extends HTMLElement {
         // provide the preview on hover functionality
         this.onmouseover = this.onmouseover_impl.bind(this);
         this.onmouseout = this.onmouseout_impl.bind(this);
+    }
+
+
+    connectedCallback() {
+        this.style.display = "inline-block";
 
         this.refresh();
     }
@@ -101,7 +99,6 @@ export class LCRef extends HTMLElement {
      * This functin sets the hyperlink style.
      */
     private setupStyle() : void {
-        this.style.display = "inline-block";
 
         let style = document.createElement("style");
 
