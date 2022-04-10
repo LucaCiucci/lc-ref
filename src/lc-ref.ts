@@ -77,6 +77,8 @@ export class LCRef extends HTMLElement {
         // provide the preview on hover functionality
         this.onmouseover = this.onmouseover_impl.bind(this);
         this.onmouseout = this.onmouseout_impl.bind(this);
+
+        this.refresh();
     }
 
     /**
@@ -197,7 +199,6 @@ a { color: var(--link-color, blue); }
         element.innerHTML = "";
 
         // TODO load the page title and target number, for now we will use a simpler solution:
-        console.log(href);
         if (href.includes('#') && !href.endsWith('#')) {
             element.innerText = "#" + href.split('#')[1];
         }
@@ -211,6 +212,11 @@ a { color: var(--link-color, blue); }
         if (href == null || href == "") {
            this.setAttribute("href", "#");
            href = "#";
+        }
+
+        if (this.hasAttribute("ref")) {
+            let ref_id = this.getAttribute("ref");
+            this.setAttribute("href", "#" + ref_id);
         }
 
         this.link_element?.setAttribute("href", href);
@@ -323,6 +329,10 @@ a { color: var(--link-color, blue); }
 
         let href = this.getAttribute("href")!;
 
+        if (href.startsWith("#") && !href.endsWith('#')) {
+            return;
+        }
+
         /* at this point, we know that the href is not an id.
          * If the links points to an element inside a page, we will try to display the element preview.
          * In all other cases, we will display the page preview inside an iframe.
@@ -350,6 +360,7 @@ a { color: var(--link-color, blue); }
             preview.appendChild(iframe);
 
             iframe.onload = () => {
+                console.log("le-ref: iframe loaded");
                 let target_has_preview = false;
                 try {
                     //let iframe_content = iframe.contentDocument!.documentElement!.innerHTML;
