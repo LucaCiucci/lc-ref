@@ -114,3 +114,7 @@ export function renumerate(afterAll : boolean = false) : void {
  export function enumerate() : void {
     renumerate(true);
 }
+
+window.addEventListener("load", () => {
+    enumerate();
+});

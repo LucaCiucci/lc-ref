@@ -74,7 +74,7 @@ export class LCRef extends HTMLElement {
 
 
     connectedCallback() {
-        this.style.display = "inline-block";
+        this.style.display = "inline";
 
         this.refresh();
     }
@@ -143,7 +143,7 @@ a { color: var(--link-color, blue); }
         let my_root = this.my_root;
 
         // we set the style of the root element so that it will be displayed inline and the tooltip will be displayed on top of it.
-        my_root.style.display = "inline-block";
+        my_root.style.display = "inline";
         my_root.style.position = "relative";
 
         // we add the root to the shadow DOM.
